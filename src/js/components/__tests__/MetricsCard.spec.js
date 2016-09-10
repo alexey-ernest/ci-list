@@ -3,25 +3,28 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import ThemeWrapper from '../../ThemeWrapper';
-import BuildCard from '../BuildCard.react';
+import MetricsCard from '../MetricsCard.react';
 
 
 jest.mock('react-dom');
 
-describe('BuildCard component', () => {
+describe('MetricsCard component', () => {
 
   const data = {
     id: 'abcd',
-    build: {
-      type: 'DEBUG',
-      version: '1.0.1'
+    metrics: {
+      test: 63,
+      maintainability: 51,
+      security: 32,
+      workmanship: 45
     }
   };
 
   it('should render correctly', () => {
+
     const component = renderer.create(
       <ThemeWrapper>
-        <BuildCard job={data} />
+        <MetricsCard job={data} />
       </ThemeWrapper>
     );
 
@@ -34,7 +37,7 @@ describe('BuildCard component', () => {
 
     const component = renderer.create(
       <ThemeWrapper>
-        <BuildCard job={data} onClick={onClick} />
+        <MetricsCard job={data} onClick={onClick} />
       </ThemeWrapper>
     );
 
