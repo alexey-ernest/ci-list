@@ -1,0 +1,24 @@
+@import "compass"
+
+// Reset layout
+@import "compass/reset"
+
+// Typography
+@import "partials/typography"
+
+// Layout
+@import "partials/layout"
+
+// Theme
+@import "theme"
+
+
+// Links
+a
+  +link-colors($color-link, $color-link)
+  +hover-link
+  font-weight: 400
+
+// Body
+body
+  background-color: $color-bg

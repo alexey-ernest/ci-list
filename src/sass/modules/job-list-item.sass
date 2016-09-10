@@ -1,0 +1,29 @@
+@import "../layout"
+@import "../typography"
+
+$susy: (gutters: 1)
+
+.item-expanded
+  width: 104%
+  left: -2%
+  position: relative
+
+.item-container
+  margin: 0 66px
+
+  h2
+    +type-setting(2)
+    margin-bottom: rhythm(1)
+
+.item-content
+  +container(100%)
+
+.item-card
+  +span(4 of 12)
+  margin-bottom: rhythm(2)
+
+  &:nth-child(3)
+    +last
+
+.item-media
+  cursor: pointer

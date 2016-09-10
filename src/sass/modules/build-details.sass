@@ -1,0 +1,16 @@
+@import "../layout"
+@import "../typography"
+
+.build-details-container
+  margin: rhythm(3) auto
+  +container(100%)
+
+.build-details-section
+  text-align: center
+
+  +span(4 of 12)
+  &:nth-child(3)
+    +last
+
+  .icon
+    margin: 0 0 rhythm(2)
