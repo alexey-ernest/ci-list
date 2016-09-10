@@ -217,7 +217,7 @@ export default class JobListItem extends Component {
       <Card key={job.id + '-functests'} className={styles['item-card']}>
         <CardMedia>
           <img
-            src="images/crash.png"
+            src="images/ftests.png"
             onClick={this._onFuncTestsClick}
             className={styles['item-media']}
           />

@@ -382,10 +382,10 @@ export default {
     data.datasets.push({
       label: 'Passed, %',
       data: passedData,
-      fillColor: 'rgba(139, 195, 74, 0.2)',
-      strokeColor: 'rgba(139, 195, 74, 0.8)',
-      highlightFill: 'rgba(139, 195, 74, 0.75)',
-      highlightStroke: 'rgba(139, 195, 74, 1)'
+      fillColor: 'rgba(255, 152, 0, 0.2)',
+      strokeColor: 'rgba(255, 152, 0, 0.8)',
+      highlightFill: 'rgba(255, 152, 0, 0.75)',
+      highlightStroke: 'rgba(255, 152, 0, 1)'
     });
 
     // Failed data
