@@ -13,6 +13,7 @@ import React, {Component, PropTypes} from 'react';
 import {Card, CardActions, CardHeader, CardText, CardMedia, CardTitle} from 'material-ui/Card';
 import FontIcon from 'material-ui/FontIcon';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import {List, ListItem} from 'material-ui/List';
 import LinearProgress from 'material-ui/LinearProgress';
 
@@ -47,7 +48,8 @@ export default class JobListItem extends Component {
     onMetricsClick: PropTypes.func,
     onBuildClick: PropTypes.func,
     onTestsClick: PropTypes.func,
-    onFuncTestsClick: PropTypes.func
+    onFuncTestsClick: PropTypes.func,
+    onDeployClick: PropTypes.func
   };
 
   static contextTypes = {
@@ -169,6 +171,29 @@ export default class JobListItem extends Component {
     );
   }
 
+  renderActions(job) {
+    let actions;
+    if (job.status === JobStatuses.SUCCEED) {
+      if (!job.isDeployed) {
+        actions = <RaisedButton
+                    label="Deploy the build"
+                    primary={true}
+                    onClick={this._onDeployClick.bind(this, job)} />
+      } else {
+        actions = <RaisedButton
+                      icon={<FontIcon className="material-icons">done</FontIcon>}
+                      label="Deployed"
+                      disabled={true} />
+      }
+    }
+
+    return (
+      <div className={styles['item-actions']}>
+        {actions}
+      </div>
+    );
+  }
+
   render() {
     var job = this.props.job;
 
@@ -182,6 +207,7 @@ export default class JobListItem extends Component {
     var avatar = this.renderAvatar(job);
     var status = this.renderStatus(job);
     var cards = this.renderCards(job);
+    var actions = this.renderActions(job);
 
     var detailsTitle;
     switch (job.type) {
@@ -221,6 +247,7 @@ export default class JobListItem extends Component {
             <div className={styles['item-container']}>
               <h2>{detailsTitle}</h2>
               {cards}
+              {actions}
             </div>
           </CardText>
         </Card>
@@ -258,6 +285,12 @@ export default class JobListItem extends Component {
   _onFuncTestsClick = () => {
     if (this.props.onFuncTestsClick) {
       this.props.onFuncTestsClick(this.props.job);
+    }
+  };
+
+  _onDeployClick = (job) => {
+    if (this.props.onDeployClick) {
+      this.props.onDeployClick(this.props.job);
     }
   };
 

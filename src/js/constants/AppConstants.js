@@ -17,7 +17,8 @@ const AppConstants = {
     REQUEST_JOB_TESTS: null,
     RECEIVE_JOB_TESTS: null,
     REQUEST_JOB_FUNCTESTS: null,
-    RECEIVE_JOB_FUNCTESTS: null
+    RECEIVE_JOB_FUNCTESTS: null,
+    DEPLOY_BUILD: null
   }),
 
   JobTypes: keyMirror({

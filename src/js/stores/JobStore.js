@@ -166,6 +166,17 @@ JobStore.dispatchToken = AppDispatcher.register(function(action) {
       this.emitChange();
       break;
 
+    case ActionTypes.DEPLOY_BUILD:
+      let job = _data.jobs.filter((j) => j.id === action.id);
+      if (!job.length) {
+        return;
+      }
+
+      job = job[0];
+      job.isDeployed = true;
+      this.emitChange();
+      break;
+
     default:
       // do nothing
   }

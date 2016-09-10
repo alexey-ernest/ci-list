@@ -13,6 +13,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import CircularProgress from 'material-ui/CircularProgress';
 
+import JobActionCreators from '../actions/JobActionCreators';
 import JobListItem from './JobListItem.react';
 import MetricsDetails from './MetricsDetails.react';
 import BuildDetails from './BuildDetails.react';
@@ -107,6 +108,7 @@ export default class JobList extends Component {
             onBuildClick={this._onBuildClick}
             onTestsClick={this._onTestsClick}
             onFuncTestsClick={this._onFuncTestsClick}
+            onDeployClick={this._onDeployClick}
           />
         );
       }.bind(this));
@@ -162,6 +164,10 @@ export default class JobList extends Component {
       showDetails: true,
       detailsType: DialogTypes.FUNCTESTS
     });
+  };
+
+  _onDeployClick = (job) => {
+    JobActionCreators.deployBuild(job.id);
   };
 
 };

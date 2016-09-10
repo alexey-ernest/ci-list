@@ -117,6 +117,16 @@ export default {
       type: ActionTypes.RECEIVE_JOB_FUNCTESTS,
       jobFuncTests: data
     });
+  },
+
+  /**
+   * @param      {string}  Job id.
+   */
+  deployBuild(id) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.DEPLOY_BUILD,
+      id: id
+    });
   }
 
 };
