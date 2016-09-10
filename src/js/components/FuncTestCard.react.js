@@ -2,9 +2,6 @@
  * Func Tests card component.
  */
 
-// CSS
-import styles from '../../sass/modules/list-item-card.sass';
-
 // React
 import React, {Component, PropTypes} from 'react';
 
@@ -32,7 +29,8 @@ export default class FuncTestCard extends Component {
 
   static propTypes = {
     job: PropTypes.object.isRequired,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    styles: PropTypes.object
   };
 
   render() {
@@ -41,7 +39,8 @@ export default class FuncTestCard extends Component {
       return null;
     }
 
-    var testPassRate = (job.functests.passed / job.functests.total * 100).toFixed(1);
+    const testPassRate = (job.functests.passed / job.functests.total * 100).toFixed(1);
+    const styles = this.props.styles || {};
 
     return (
       <Card className={styles['item-card']}>
