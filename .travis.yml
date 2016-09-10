@@ -4,5 +4,7 @@ node_js:
 cache:
   directories:
   - node_modules
+install:
+  - npm install -g firebase-tools
 after_success:
-  npm run test:coverage
+  npm run test:coverage && firebase deploy --email ${FIREBASE_USERNAME} --password ${FIREBASE_PASSWORD}
