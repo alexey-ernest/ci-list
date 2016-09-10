@@ -1,11 +1,10 @@
 language: node_js
 node_js:
-  - 5
+  - 4
 cache:
   directories:
   - node_modules
 install:
-  - npm install -g jest-cli
   - npm install -g firebase-tools
 after_success:
   - npm run test:coverage
