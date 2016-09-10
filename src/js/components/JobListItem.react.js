@@ -27,6 +27,7 @@ import AppConstants from '../constants/AppConstants';
 
 const JobTypes = AppConstants.JobTypes;
 const JobStatuses = AppConstants.JobStatuses;
+const Colors = AppConstants.Colors;
 
 const iconStyles = {
   fontSize: 50
@@ -86,27 +87,55 @@ export default class JobListItem extends Component {
         break;
 
       case JobStatuses.QUEUED:
-        status = <FontIcon className="material-icons" style={style} title="Scheduled">schedule</FontIcon>;
+        status = (
+          <div className={styles['item-dashboard']}>
+            <FontIcon className="material-icons" style={style} title="Job Scheduled">schedule</FontIcon>
+          </div>
+        );
         break;
 
       case JobStatuses.CANCELLED:
-        status = <FontIcon className="material-icons" style={style} title="Cancelled">block</FontIcon>;
+        status = (
+          <div className={styles['item-dashboard']}>
+            <FontIcon className="material-icons" style={style} title="Job Cancelled">block</FontIcon>
+          </div>
+        );
         break;
 
       case JobStatuses.ACCEPTED:
-        status = <LinearProgress mode="determinate" value={100} color="#4caf50" />;
+        style.color = Colors.green;
+        status = (
+          <div className={styles['item-dashboard']}>
+            <FontIcon className="material-icons" style={style} title="Changes Merged">call_merge</FontIcon>
+          </div>
+        );
         break;
 
       case JobStatuses.SUCCEED:
-        status = <LinearProgress mode="determinate" value={100} color="#4caf50" />;
+        style.color = Colors.green;
+        status = (
+          <div className={styles['item-dashboard']}>
+            <FontIcon className="material-icons" style={style} title="Build Done">done</FontIcon>
+          </div>
+        );
         break;
 
       case JobStatuses.REJECTED:
-        status = <LinearProgress mode="determinate" value={100} color="#f44336" />;
+        style.color = Colors.red;
+        status = (
+          <div className={styles['item-dashboard']}>
+            <FontIcon className="material-icons" style={style} title="Changes Rejected">error</FontIcon>
+          </div>
+        );
         break;
 
       case JobStatuses.FAILED:
-        status = <LinearProgress mode="determinate" value={100} color="#f44336" />;
+        style.color = Colors.red;
+        status = (
+          <div className={styles['item-dashboard']}>
+            <FontIcon className="material-icons" style={style} title="Build Failed">error</FontIcon>
+          </div>
+        );
         break;
     }
 

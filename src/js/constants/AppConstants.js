@@ -45,7 +45,12 @@ const AppConstants = {
     BUILD: null,
     TESTS: null,
     FUNCTESTS: null
-  })
+  }),
+
+  Colors: {
+    green: '#4caf50',
+    red: '#f44336'
+  }
 
 };
 
