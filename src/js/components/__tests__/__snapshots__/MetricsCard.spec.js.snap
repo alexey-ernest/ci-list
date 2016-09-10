@@ -1,3 +1,5 @@
+exports[`MetricsCard component should not render without job.metrics provided 1`] = `null`;
+
 exports[`MetricsCard component should render correctly 1`] = `
 <div
   className={undefined}

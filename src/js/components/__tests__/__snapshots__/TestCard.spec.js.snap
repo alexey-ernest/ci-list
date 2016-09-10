@@ -1,3 +1,5 @@
+exports[`TestCard component should not render without job.tests provided 1`] = `null`;
+
 exports[`TestCard component should render correctly 1`] = `
 <div
   className={undefined}

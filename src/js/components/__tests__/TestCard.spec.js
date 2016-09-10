@@ -20,6 +20,17 @@ describe('TestCard component', () => {
     }
   };
 
+  it('should not render without job.tests provided', () => {
+    const component = renderer.create(
+      <ThemeWrapper>
+        <TestCard job={{}} />
+      </ThemeWrapper>
+    );
+
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should render correctly', () => {
     const component = renderer.create(
       <ThemeWrapper>

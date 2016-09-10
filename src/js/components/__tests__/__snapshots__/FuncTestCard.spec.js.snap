@@ -1,3 +1,5 @@
+exports[`FuncTestCard component should not render without job.functests provided 1`] = `null`;
+
 exports[`FuncTestCard component should render correctly 1`] = `
 <div
   className={undefined}

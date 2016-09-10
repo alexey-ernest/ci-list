@@ -20,6 +20,17 @@ describe('MetricsCard component', () => {
     }
   };
 
+  it('should not render without job.metrics provided', () => {
+    const component = renderer.create(
+      <ThemeWrapper>
+        <MetricsCard job={{}} />
+      </ThemeWrapper>
+    );
+
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should render correctly', () => {
 
     const component = renderer.create(

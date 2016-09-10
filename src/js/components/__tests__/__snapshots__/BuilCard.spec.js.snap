@@ -1,3 +1,5 @@
+exports[`BuildCard component should not render without job.build provided 1`] = `null`;
+
 exports[`BuildCard component should render correctly 1`] = `
 <div
   className={undefined}

@@ -20,6 +20,17 @@ describe('FuncTestCard component', () => {
     }
   };
 
+  it('should not render without job.functests provided', () => {
+    const component = renderer.create(
+      <ThemeWrapper>
+        <FuncTestCard job={{}} />
+      </ThemeWrapper>
+    );
+
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should render correctly', () => {
     const component = renderer.create(
       <ThemeWrapper>
