@@ -16,8 +16,11 @@ import {List, ListItem} from 'material-ui/List';
 import LinearProgress from 'material-ui/LinearProgress';
 
 import moment from 'moment';
-import classnames from 'classnames';
 
+import MetricsCard from './MetricsCard.react';
+import BuildCard from './BuildCard.react';
+import TestCard from './TestCard.react';
+import FuncTestCard from './FuncTestCard.react';
 import JobActionCreators from '../actions/JobActionCreators';
 import AppConstants from '../constants/AppConstants';
 
@@ -28,24 +31,11 @@ const iconStyles = {
   fontSize: 50
 };
 
-const cardTitleStyles = {
-  paddingBottom: 0
-};
-
-const cardTitleTitleStyles = {
-  fontSize: 16,
-  fontWeight: 400
-};
-
-const cardTextStyles = {
-  paddingTop: 6,
-  lineHeight: 1.5
-};
-
 const statusIconStyles = {
   fontSize: '48px',
   lineHeight: '56px'
 };
+
 
 export default class JobListItem extends Component {
 
@@ -122,126 +112,27 @@ export default class JobListItem extends Component {
     return status;
   }
 
-  renderMetricsCard(job) {
-    if (!job.metrics) {
-      return null;
-    }
-
-    return (
-      <Card key={job.id + '-metrics'} className={styles['item-card']}>
-        <CardMedia>
-          <img
-            src="images/analytics.png"
-            onClick={this._onMetricsClick}
-            className={styles['item-media']}
-          />
-        </CardMedia>
-        <CardTitle
-          title="Metrics"
-          style={cardTitleStyles}
-          titleStyle={cardTitleTitleStyles}
-        />
-        <CardText style={cardTextStyles}>
-          Test: {job.metrics.test}, <br/>
-          Maintainability: {job.metrics.maintainability}, <br/>
-          Security: {job.metrics.security}, <br/>
-          Workmanship: {job.metrics.workmanship}
-        </CardText>
-      </Card>
-    );
-  }
-
-  renderBuildCard(job) {
-    if (!job.build) {
-      return null;
-    }
-
-    return (
-      <Card key={job.id + '-build'} className={styles['item-card']}>
-        <CardMedia>
-          <img
-            src="images/release.png"
-            onClick={this._onBuildClick}
-            className={styles['item-media']}
-          />
-        </CardMedia>
-        <CardTitle
-          title="Build"
-          style={cardTitleStyles}
-          titleStyle={cardTitleTitleStyles}
-        />
-        <CardText style={cardTextStyles}>
-          {job.build.type} v{job.build.version}
-        </CardText>
-      </Card>
-    );
-  }
-
-  renderTestsCard(job) {
-    if (!job.tests) {
-      return null;
-    }
-
-    var testPassRate = (job.tests.passed / job.tests.total * 100).toFixed(1);
-
-    return (
-      <Card key={job.id + '-tests'} className={styles['item-card']}>
-        <CardMedia>
-          <img
-            src="images/crash.png"
-            onClick={this._onTestsClick}
-            className={styles['item-media']}
-          />
-        </CardMedia>
-        <CardTitle
-          title="Tests"
-          style={cardTitleStyles}
-          titleStyle={cardTitleTitleStyles}
-        />
-        <CardText style={cardTextStyles}>
-          Pass rate: {testPassRate}%,
-          Coverage: {job.tests.coverage}%
-        </CardText>
-      </Card>
-    );
-  }
-
-  renderFuncTestsCard(job) {
-    if (!job.functests) {
-      return null;
-    }
-
-    var testPassRate = (job.functests.passed / job.functests.total * 100).toFixed(1);
-
-    return (
-      <Card key={job.id + '-functests'} className={styles['item-card']}>
-        <CardMedia>
-          <img
-            src="images/ftests.png"
-            onClick={this._onFuncTestsClick}
-            className={styles['item-media']}
-          />
-        </CardMedia>
-        <CardTitle
-          title="FuncTests"
-          style={cardTitleStyles}
-          titleStyle={cardTitleTitleStyles}
-        />
-        <CardText style={cardTextStyles}>
-          Pass rate: {testPassRate}%, <br/>
-          Coverage: {job.functests.coverage}%
-        </CardText>
-      </Card>
-    );
-  }
-
   renderCards(job) {
-    var metricsCard = this.renderMetricsCard(job);
-    var buildCard = this.renderBuildCard(job);
-    var testsCard = this.renderTestsCard(job);
-    var functestsCard = this.renderFuncTestsCard(job);
-
-    return [metricsCard, buildCard, testsCard, functestsCard];
+    return (
+      <div className={styles['item-content']}>
+        <MetricsCard
+          job={job}
+          onClick={this._onMetricsClick}
+        />
+        <BuildCard
+          job={job}
+          onClick={this._onBuildClick}
+        />
+        <TestCard
+          job={job}
+          onClick={this._onTestsClick}
+        />
+        <FuncTestCard
+          job={job}
+          onClick={this._onFuncTestsClick}
+        />
+      </div>
+    );
   }
 
   render() {
@@ -252,12 +143,10 @@ export default class JobListItem extends Component {
       title += ' (' + job.author + ')';
     }
 
-    var avatar = this.renderAvatar(job);
-
     var startedTime = moment(job.started).fromNow();
 
+    var avatar = this.renderAvatar(job);
     var status = this.renderStatus(job);
-
     var cards = this.renderCards(job);
 
     var detailsTitle;
@@ -297,9 +186,7 @@ export default class JobListItem extends Component {
           <CardText expandable={true}>
             <div className={styles['item-container']}>
               <h2>{detailsTitle}</h2>
-              <div className={styles['item-content']}>
-                {cards}
-              </div>
+              {cards}
             </div>
           </CardText>
         </Card>
