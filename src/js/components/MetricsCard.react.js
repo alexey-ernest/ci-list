@@ -39,7 +39,7 @@ export default class MetricsCard extends Component {
       return null;
     }
 
-    let styles = this.props.styles || {};
+    const styles = this.props.styles || {};
 
     return (
       <Card className={styles['item-card']}>
