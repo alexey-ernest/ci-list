@@ -29,60 +29,27 @@ describe('BuildCard component', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  // it('should update value by onChange event', () => {
-  //   const component = renderer.create(
-  //     <ThemeWrapper>
-  //       <Search />
-  //     </ThemeWrapper>
-  //   );
+  it('should call onClick handler when clicking on image', () => {
+    const onClick = jasmine.createSpy();
+    const data = {
+      id: 'abcd',
+      build: {
+        type: 'DEBUG',
+        version: '1.0.1'
+      }
+    };
 
-  //   let tree = component.toJSON();
+    const component = renderer.create(
+      <ThemeWrapper>
+        <BuildCard job={data} onClick={onClick} />
+      </ThemeWrapper>
+    );
 
-  //   // manually trigger the callback
-  //   tree.children[0].children[0].children[0].children[1].props.onChange({
-  //     target: {
-  //       value: 'a'
-  //     }
-  //   });
+    let tree = component.toJSON();
 
-  //   // re-rendering
-  //   tree = component.toJSON();
-  //   expect(tree).toMatchSnapshot();
-  // });
+    // click on image
+    tree.children[0].children[0].children[0].children[0].props.onClick();
 
-  // it('should call onSubmit handler if <Enter> key pressed', () => {
-  //   let onSubmit = jasmine.createSpy();
-
-  //   const component = renderer.create(
-  //     <ThemeWrapper>
-  //       <Search onSubmit={onSubmit} />
-  //     </ThemeWrapper>
-  //   );
-
-  //   let tree = component.toJSON();
-
-  //   // type some text
-  //   tree.children[0].children[0].children[0].children[1].props.onChange({
-  //     target: {
-  //       value: 'alex'
-  //     }
-  //   });
-
-  //   // re-rendering
-  //   tree = component.toJSON();
-  //   expect(tree).toMatchSnapshot();
-
-  //   // type space
-  //   tree.children[0].children[0].children[0].children[1].props.onKeyDown({
-  //     keyCode: 32
-  //   });
-
-  //   // type enter
-  //   tree.children[0].children[0].children[0].children[1].props.onKeyDown({
-  //     keyCode: 13
-  //   });
-
-  //   expect(onSubmit.calls.count()).toBe(1);
-  //   expect(onSubmit.calls.argsFor(0)[0]).toBe('alex');
-  // });
+    expect(onClick.calls.count()).toBe(1);
+  });
 });
