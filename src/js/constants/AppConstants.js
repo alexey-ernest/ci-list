@@ -12,10 +12,12 @@ const AppConstants = {
     RECEIVE_JOB: null,
     REQUEST_JOB_METRICS: null,
     RECEIVE_JOB_METRICS: null,
+    REQUEST_JOB_BUILD: null,
+    RECEIVE_JOB_BUILD: null,
     REQUEST_JOB_TESTS: null,
     RECEIVE_JOB_TESTS: null,
-    REQUEST_JOB_BUILD: null,
-    RECEIVE_JOB_BUILD: null
+    REQUEST_JOB_FUNCTESTS: null,
+    RECEIVE_JOB_FUNCTESTS: null
   }),
 
   JobTypes: keyMirror({
@@ -36,6 +38,13 @@ const AppConstants = {
   BuildTypes: keyMirror({
     DEBUG: null,
     RELEASE: null
+  }),
+
+  DialogTypes: keyMirror({
+    METRICS: null,
+    BUILD: null,
+    TESTS: null,
+    FUNCTESTS: null
   })
 
 };

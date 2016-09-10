@@ -22,8 +22,9 @@ const getStateFromStores = () => {
     jobs: JobStore.getAll(),
     job: JobStore.getJob(),
     jobMetrics: JobStore.getMetrics(),
+    jobBuild: JobStore.getBuild(),
     jobTests: JobStore.getTests(),
-    jobBuild: JobStore.getBuild()
+    jobFuncTests: JobStore.getFuncTests()
   };
 };
 

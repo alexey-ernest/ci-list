@@ -22,8 +22,9 @@ var _data = {
   keywords: '',
   job: null,
   jobMetrics: null,
+  jobBuild: null,
   jobTests: null,
-  jobBuild: null
+  jobFuncTests: null
 };
 
 class JobStore extends EventEmitter {
@@ -81,13 +82,18 @@ class JobStore extends EventEmitter {
     return _data.jobMetrics;
   }
 
+  getBuild() {
+    return _data.jobBuild;
+  }
+
   getTests() {
     return _data.jobTests;
   }
 
-  getBuild() {
-    return _data.jobBuild;
+  getFuncTests() {
+    return _data.jobFuncTests;
   }
+
 }
 
 // single instance
@@ -127,6 +133,17 @@ JobStore.dispatchToken = AppDispatcher.register(function(action) {
       this.emitChange();
       break;
 
+    case ActionTypes.REQUEST_JOB_BUILD:
+      _data.jobBuild = null;
+      JobApiUtils.getJobBuild(action.id);
+      this.emitChange();
+      break;
+
+    case ActionTypes.RECEIVE_JOB_BUILD:
+      _data.jobBuild = action.jobBuild;
+      this.emitChange();
+      break;
+
     case ActionTypes.REQUEST_JOB_TESTS:
       _data.jobTests = null;
       JobApiUtils.getJobTests(action.id);
@@ -138,14 +155,14 @@ JobStore.dispatchToken = AppDispatcher.register(function(action) {
       this.emitChange();
       break;
 
-    case ActionTypes.REQUEST_JOB_BUILD:
-      _data.jobBuild = null;
-      JobApiUtils.getJobBuild(action.id);
+    case ActionTypes.REQUEST_JOB_FUNCTESTS:
+      _data.jobFuncTests = null;
+      JobApiUtils.getJobFuncTests(action.id);
       this.emitChange();
       break;
 
-    case ActionTypes.RECEIVE_JOB_BUILD:
-      _data.jobBuild = action.jobBuild;
+    case ActionTypes.RECEIVE_JOB_FUNCTESTS:
+      _data.jobFuncTests = action.jobFuncTests;
       this.emitChange();
       break;
 

@@ -38,7 +38,14 @@ export default {
       tests: {
         total: 150,
         passed: 102,
-        failed: 48
+        failed: 48,
+        coverage: 33.1
+      },
+      functests: {
+        total: 50,
+        passed: 33,
+        failed: 17,
+        coverage: 12.8
       }
     },
     {
@@ -61,7 +68,14 @@ export default {
       tests: {
         total: 150,
         passed: 95,
-        failed: 48
+        failed: 48,
+        coverage: 36.4
+      },
+      functests: {
+        total: 51,
+        passed: 34,
+        failed: 17,
+        coverage: 14.5
       }
     },
     {
@@ -102,7 +116,14 @@ export default {
       tests: {
         total: 150,
         passed: 99,
-        failed: 51
+        failed: 51,
+        coverage: 38.4
+      },
+      functests: {
+        total: 55,
+        passed: 34,
+        failed: 21,
+        coverage: 15.0
       }
     },
     {
@@ -136,7 +157,14 @@ export default {
       tests: {
         total: 300,
         passed: 300,
-        failed: 0
+        failed: 0,
+        coverage: 41.8
+      },
+      functests: {
+        total: 55,
+        passed: 55,
+        failed: 0,
+        coverage: 18.3
       }
     },
     {
@@ -158,7 +186,14 @@ export default {
       tests: {
         total: 300,
         passed: 275,
-        failed: 25
+        failed: 25,
+        coverage: 42.7
+      },
+      functests: {
+        total: 55,
+        passed: 54,
+        failed: 1,
+        coverage: 17.2
       }
     },
     {
@@ -180,7 +215,14 @@ export default {
       tests: {
         total: 300,
         passed: 275,
-        failed: 25
+        failed: 25,
+        coverage: 38.4
+      },
+      functests: {
+        total: 55,
+        passed: 31,
+        failed: 0,
+        coverage: 9.1
       }
     }
     ];
@@ -258,7 +300,7 @@ export default {
   },
 
   /**
-   * Gets job tests pass rate data.
+   * Gets job tests data.
    *
    * @param      {string}  id      Job id.
    */
@@ -299,8 +341,75 @@ export default {
       data: failedData
     });
 
+    // Coverage data
+    var coverageData = [];
+    for (i = 0; i < len; i+=1) {
+      coverageData[i] = Math.round(Math.random() * 40 * 10) / 10;
+    }
+    data.datasets.push({
+      label: 'Coverage, %',
+      data: coverageData
+    });
+
     setTimeout(function () {
       JobActionCreators.receiveJobTests(data);
+    }, 1000);
+  },
+
+  /**
+   * Gets job func tests data.
+   *
+   * @param      {string}  id      Job id.
+   */
+  getJobFuncTests(id) {
+    var labels = [];
+    var i, len = 7;
+    for (i = len - 1; i >= 0; i-=1) {
+      labels.push(moment().add(-i, 'days').format('DD-MM-YY'));
+    }
+
+    var data = {
+      labels: labels,
+      datasets: []
+    };
+
+
+    // Passed data
+    var passedData = [];
+    for (i = 0; i < len; i+=1) {
+      passedData[i] = Math.random() * 100 | 0;
+    }
+    data.datasets.push({
+      label: 'Passed, %',
+      data: passedData,
+      fillColor: 'rgba(139, 195, 74, 0.2)',
+      strokeColor: 'rgba(139, 195, 74, 0.8)',
+      highlightFill: 'rgba(139, 195, 74, 0.75)',
+      highlightStroke: 'rgba(139, 195, 74, 1)'
+    });
+
+    // Failed data
+    var failedData = [];
+    for (i = 0; i < len; i+=1) {
+      failedData[i] = 100 - passedData[i];
+    }
+    data.datasets.push({
+      label: 'Failed, %',
+      data: failedData
+    });
+
+    // Coverage data
+    var coverageData = [];
+    for (i = 0; i < len; i+=1) {
+      coverageData[i] = Math.round(Math.random() * 20 * 10) / 10;
+    }
+    data.datasets.push({
+      label: 'Coverage, %',
+      data: coverageData
+    });
+
+    setTimeout(function () {
+      JobActionCreators.receiveJobFuncTests(data);
     }, 1000);
   },
 

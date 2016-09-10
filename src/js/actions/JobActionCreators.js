@@ -62,6 +62,26 @@ export default {
   /**
    * @param      {id}  Job id.
    */
+  requestJobBuild(id) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.REQUEST_JOB_BUILD,
+      id: id
+    });
+  },
+
+  /**
+   * @param      {Object}  Job build details.
+   */
+  receiveJobBuild(data) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.RECEIVE_JOB_BUILD,
+      jobBuild: data
+    });
+  },
+
+  /**
+   * @param      {id}  Job id.
+   */
   requestJobTests(id) {
     AppDispatcher.dispatch({
       type: ActionTypes.REQUEST_JOB_TESTS,
@@ -82,20 +102,20 @@ export default {
   /**
    * @param      {id}  Job id.
    */
-  requestJobBuild(id) {
+  requestJobFuncTests(id) {
     AppDispatcher.dispatch({
-      type: ActionTypes.REQUEST_JOB_BUILD,
+      type: ActionTypes.REQUEST_JOB_FUNCTESTS,
       id: id
     });
   },
 
   /**
-   * @param      {Object}  Job build details.
+   * @param      {Object}  Job func tests data.
    */
-  receiveJobBuild(data) {
+  receiveJobFuncTests(data) {
     AppDispatcher.dispatch({
-      type: ActionTypes.RECEIVE_JOB_BUILD,
-      jobBuild: data
+      type: ActionTypes.RECEIVE_JOB_FUNCTESTS,
+      jobFuncTests: data
     });
   }
 

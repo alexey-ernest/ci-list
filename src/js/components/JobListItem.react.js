@@ -54,7 +54,8 @@ export default class JobListItem extends Component {
     selectedJob: PropTypes.object,
     onMetricsClick: PropTypes.func,
     onBuildClick: PropTypes.func,
-    onTestsClick: PropTypes.func
+    onTestsClick: PropTypes.func,
+    onFuncTestsClick: PropTypes.func
   };
 
   static contextTypes = {
@@ -198,7 +199,37 @@ export default class JobListItem extends Component {
           titleStyle={cardTitleTitleStyles}
         />
         <CardText style={cardTextStyles}>
-          Pass rate {testPassRate}%
+          Pass rate: {testPassRate}%,
+          Coverage: {job.tests.coverage}%
+        </CardText>
+      </Card>
+    );
+  }
+
+  renderFuncTestsCard(job) {
+    if (!job.functests) {
+      return null;
+    }
+
+    var testPassRate = (job.functests.passed / job.functests.total * 100).toFixed(1);
+
+    return (
+      <Card key={job.id + '-functests'} className={styles['item-card']}>
+        <CardMedia>
+          <img
+            src="images/crash.png"
+            onClick={this._onFuncTestsClick}
+            className={styles['item-media']}
+          />
+        </CardMedia>
+        <CardTitle
+          title="FuncTests"
+          style={cardTitleStyles}
+          titleStyle={cardTitleTitleStyles}
+        />
+        <CardText style={cardTextStyles}>
+          Pass rate: {testPassRate}%, <br/>
+          Coverage: {job.functests.coverage}%
         </CardText>
       </Card>
     );
@@ -208,8 +239,9 @@ export default class JobListItem extends Component {
     var metricsCard = this.renderMetricsCard(job);
     var buildCard = this.renderBuildCard(job);
     var testsCard = this.renderTestsCard(job);
+    var functestsCard = this.renderFuncTestsCard(job);
 
-    return [metricsCard, buildCard, testsCard];
+    return [metricsCard, buildCard, testsCard, functestsCard];
   }
 
   render() {
@@ -299,6 +331,12 @@ export default class JobListItem extends Component {
   _onTestsClick = () => {
     if (this.props.onTestsClick) {
       this.props.onTestsClick(this.props.job);
+    }
+  };
+
+  _onFuncTestsClick = () => {
+    if (this.props.onFuncTestsClick) {
+      this.props.onFuncTestsClick(this.props.job);
     }
   };
 

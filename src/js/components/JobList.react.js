@@ -15,17 +15,14 @@ import CircularProgress from 'material-ui/CircularProgress';
 
 import JobListItem from './JobListItem.react';
 import MetricsDetails from './MetricsDetails.react';
-import TestDetails from './TestDetails.react';
 import BuildDetails from './BuildDetails.react';
+import TestDetails from './TestDetails.react';
+import FuncTestDetails from './FuncTestDetails.react';
+import AppConstants from '../constants/AppConstants';
+
+const DialogTypes = AppConstants.DialogTypes;
 
 
-import keyMirror from 'keymirror';
-
-const DetailsTypes = keyMirror({
-  METRICS: null,
-  BUILD: null,
-  TESTS: null
-});
 
 export default class JobList extends Component {
 
@@ -44,28 +41,34 @@ export default class JobList extends Component {
     var dialogTitle = (job.title || job.id);
     switch (this.state.detailsType)
     {
-      case DetailsTypes.METRICS:
+      case DialogTypes.METRICS:
         dialogTitle += ' Metrics';
         break;
-      case DetailsTypes.BUILD:
+      case DialogTypes.BUILD:
         dialogTitle += ' Build';
         break;
-      case DetailsTypes.TESTS:
+      case DialogTypes.TESTS:
         dialogTitle += ' Tests';
+        break;
+      case DialogTypes.FUNCTESTS:
+        dialogTitle += ' Functional Tests';
         break;
     }
 
     var dialogContent;
     switch (this.state.detailsType)
     {
-      case DetailsTypes.METRICS:
+      case DialogTypes.METRICS:
         dialogContent = <MetricsDetails job={job} metrics={this.props.data.jobMetrics} />;
         break;
-      case DetailsTypes.BUILD:
+      case DialogTypes.BUILD:
         dialogContent = <BuildDetails job={job} build={this.props.data.jobBuild} />;
         break;
-      case DetailsTypes.TESTS:
+      case DialogTypes.TESTS:
         dialogContent = <TestDetails job={job} tests={this.props.data.jobTests} />;
+        break;
+      case DialogTypes.FUNCTESTS:
+        dialogContent = <FuncTestDetails job={job} tests={this.props.data.jobFuncTests} />;
         break;
     }
 
@@ -103,6 +106,7 @@ export default class JobList extends Component {
             onMetricsClick={this._onMetricsClick}
             onBuildClick={this._onBuildClick}
             onTestsClick={this._onTestsClick}
+            onFuncTestsClick={this._onFuncTestsClick}
           />
         );
       }.bind(this));
@@ -135,21 +139,28 @@ export default class JobList extends Component {
   _onMetricsClick = (job) => {
     this.setState({
       showDetails: true,
-      detailsType: DetailsTypes.METRICS
+      detailsType: DialogTypes.METRICS
     });
   };
 
   _onBuildClick = (job) => {
     this.setState({
       showDetails: true,
-      detailsType: DetailsTypes.BUILD
+      detailsType: DialogTypes.BUILD
     });
   };
 
   _onTestsClick = (job) => {
     this.setState({
       showDetails: true,
-      detailsType: DetailsTypes.TESTS
+      detailsType: DialogTypes.TESTS
+    });
+  };
+
+  _onFuncTestsClick = (job) => {
+    this.setState({
+      showDetails: true,
+      detailsType: DialogTypes.FUNCTESTS
     });
   };
 
