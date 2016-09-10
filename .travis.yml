@@ -9,4 +9,4 @@ install:
 after_success:
   - npm run test:coverage
   - npm run build
-  - firebase deploy --email ${FIREBASE_USERNAME} --password ${FIREBASE_PASSWORD}
+  - firebase deploy --token "$FIREBASE_TOKEN"
