@@ -2,9 +2,6 @@
  * Build card component.
  */
 
-// CSS
-import styles from '../../sass/modules/list-item-card.sass';
-
 // React
 import React, {Component, PropTypes} from 'react';
 
@@ -32,7 +29,8 @@ export default class BuildCard extends Component {
 
   static propTypes = {
     job: PropTypes.object.isRequired,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    styles: PropTypes.object
   };
 
   render() {
@@ -40,6 +38,8 @@ export default class BuildCard extends Component {
     if (!job.build) {
       return null;
     }
+
+    let styles = this.props.styles || {};
 
     return (
       <Card className={styles['item-card']}>

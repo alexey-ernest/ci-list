@@ -32,7 +32,7 @@ export default class MetricsCard extends Component {
 
   static propTypes = {
     job: PropTypes.object.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func
   };
 
   render() {

@@ -4,6 +4,7 @@
 
 // CSS
 import styles from '../../sass/modules/job-list-item.sass';
+import cardStyles from '../../sass/modules/list-item-card.sass';
 
 // React
 import React, {Component, PropTypes} from 'react';
@@ -118,18 +119,22 @@ export default class JobListItem extends Component {
         <MetricsCard
           job={job}
           onClick={this._onMetricsClick}
+          styles={cardStyles}
         />
         <BuildCard
           job={job}
           onClick={this._onBuildClick}
+          styles={cardStyles}
         />
         <TestCard
           job={job}
           onClick={this._onTestsClick}
+          styles={cardStyles}
         />
         <FuncTestCard
           job={job}
           onClick={this._onFuncTestsClick}
+          styles={cardStyles}
         />
       </div>
     );
