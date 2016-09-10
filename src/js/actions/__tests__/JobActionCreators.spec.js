@@ -139,6 +139,57 @@ describe('JobActionCreators', () => {
     });
   });
 
+  describe('#requestJobBuild()', () => {
+
+    it('should exists', () => {
+      expect(JobActionCreators.requestJobBuild).toBeDefined();
+      expect(typeof(JobActionCreators.requestJobBuild)).toEqual('function');
+    });
+
+    it('should dispatch REQUEST_JOB_BUILD event', () => {
+      const dispatcher = require('../../dispatcher/AppDispatcher');
+      const spy = jest.fn();
+      dispatcher.dispatch = spy;
+
+      var id = 12;
+
+      JobActionCreators.requestJobBuild(id);
+
+      expect(spy.mock.calls.length).toBe(1);
+
+      const action = spy.mock.calls[0][0];
+      expect(action.type).toBe(ActionTypes.REQUEST_JOB_BUILD);
+      expect(action.id).toBe(id);
+    });
+  });
+
+  describe('#receiveJobBuild()', () => {
+
+    it('should exists', () => {
+      expect(JobActionCreators.receiveJobBuild).toBeDefined();
+      expect(typeof(JobActionCreators.receiveJobBuild)).toEqual('function');
+    });
+
+    it('should dispatch RECEIVE_JOB_BUILD event', () => {
+      const dispatcher = require('../../dispatcher/AppDispatcher');
+      const spy = jest.fn();
+      dispatcher.dispatch = spy;
+
+      var data = {
+        version: '1',
+        type: 'debug'
+      };
+
+      JobActionCreators.receiveJobBuild(data);
+
+      expect(spy.mock.calls.length).toBe(1);
+
+      const action = spy.mock.calls[0][0];
+      expect(action.type).toBe(ActionTypes.RECEIVE_JOB_BUILD);
+      expect(action.jobBuild).toBe(data);
+    });
+  });
+
   describe('#requestJobTests()', () => {
 
     it('should exists', () => {
@@ -190,54 +241,54 @@ describe('JobActionCreators', () => {
     });
   });
 
-  describe('#requestJobBuild()', () => {
+  describe('#requestJobFuncTests()', () => {
 
     it('should exists', () => {
-      expect(JobActionCreators.requestJobBuild).toBeDefined();
-      expect(typeof(JobActionCreators.requestJobBuild)).toEqual('function');
+      expect(JobActionCreators.requestJobFuncTests).toBeDefined();
+      expect(typeof(JobActionCreators.requestJobFuncTests)).toEqual('function');
     });
 
-    it('should dispatch REQUEST_JOB_BUILD event', () => {
+    it('should dispatch REQUEST_JOB_FUNCTESTS event', () => {
       const dispatcher = require('../../dispatcher/AppDispatcher');
       const spy = jest.fn();
       dispatcher.dispatch = spy;
 
-      var id = 12;
+      var id = 9;
 
-      JobActionCreators.requestJobBuild(id);
+      JobActionCreators.requestJobFuncTests(id);
 
       expect(spy.mock.calls.length).toBe(1);
 
       const action = spy.mock.calls[0][0];
-      expect(action.type).toBe(ActionTypes.REQUEST_JOB_BUILD);
+      expect(action.type).toBe(ActionTypes.REQUEST_JOB_FUNCTESTS);
       expect(action.id).toBe(id);
     });
   });
 
-  describe('#receiveJobBuild()', () => {
+  describe('#receiveJobFuncTests()', () => {
 
     it('should exists', () => {
-      expect(JobActionCreators.receiveJobBuild).toBeDefined();
-      expect(typeof(JobActionCreators.receiveJobBuild)).toEqual('function');
+      expect(JobActionCreators.receiveJobFuncTests).toBeDefined();
+      expect(typeof(JobActionCreators.receiveJobFuncTests)).toEqual('function');
     });
 
-    it('should dispatch RECEIVE_JOB_BUILD event', () => {
+    it('should dispatch RECEIVE_JOB_FUNCTESTS event', () => {
       const dispatcher = require('../../dispatcher/AppDispatcher');
       const spy = jest.fn();
       dispatcher.dispatch = spy;
 
       var data = {
-        version: '1',
-        type: 'debug'
+        passed: [],
+        failed: []
       };
 
-      JobActionCreators.receiveJobBuild(data);
+      JobActionCreators.receiveJobFuncTests(data);
 
       expect(spy.mock.calls.length).toBe(1);
 
       const action = spy.mock.calls[0][0];
-      expect(action.type).toBe(ActionTypes.RECEIVE_JOB_BUILD);
-      expect(action.jobBuild).toBe(data);
+      expect(action.type).toBe(ActionTypes.RECEIVE_JOB_FUNCTESTS);
+      expect(action.jobFuncTests).toBe(data);
     });
   });
 
