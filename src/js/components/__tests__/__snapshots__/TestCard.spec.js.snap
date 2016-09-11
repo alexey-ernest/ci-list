@@ -98,7 +98,9 @@ exports[`TestCard component should render correctly 1`] = `
       }>
       Pass rate: 
       68.0
-      %, Coverage: 
+      %, 
+      <br />
+      Coverage: 
       33.1
       %
     </div>
