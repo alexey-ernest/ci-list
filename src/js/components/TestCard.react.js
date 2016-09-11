@@ -57,7 +57,7 @@ export default class TestCard extends Component {
           titleStyle={cardTitleTitleStyles}
         />
         <CardText style={cardTextStyles}>
-          Pass rate: {testPassRate}%,
+          Pass rate: {testPassRate}%, <br/>
           Coverage: {job.tests.coverage}%
         </CardText>
       </Card>
