@@ -6,3 +6,8 @@ CI build list UI
 
 ## Deployment
 https://ci-list.firebaseapp.com/
+
+## Technologies
+* Lang: JavaScript/ES6/ES7/Babel
+* Frameworks: React/Flux, Material UI components, SASS Susy grid, SASS Breakpoint responsive layout, Compass
+* Tools: webpack (build), firebase (deployment), jest (unit and snapshot testing), git (source control), travis (ci server), coveralls (test coverage)
