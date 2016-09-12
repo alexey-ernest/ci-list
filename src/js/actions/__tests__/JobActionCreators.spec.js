@@ -292,4 +292,28 @@ describe('JobActionCreators', () => {
     });
   });
 
+  describe('#deployBuild()', () => {
+
+    it('should exists', () => {
+      expect(JobActionCreators.deployBuild).toBeDefined();
+      expect(typeof(JobActionCreators.deployBuild)).toEqual('function');
+    });
+
+    it('should dispatch DEPLOY_BUILD event', () => {
+      const dispatcher = require('../../dispatcher/AppDispatcher');
+      const spy = jest.fn();
+      dispatcher.dispatch = spy;
+
+      var id = 13;
+
+      JobActionCreators.deployBuild(id);
+
+      expect(spy.mock.calls.length).toBe(1);
+
+      const action = spy.mock.calls[0][0];
+      expect(action.type).toBe(ActionTypes.DEPLOY_BUILD);
+      expect(action.id).toBe(id);
+    });
+  });
+
 });
