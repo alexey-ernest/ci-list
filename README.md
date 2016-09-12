@@ -18,4 +18,4 @@ The app is buit on classical Facebook's flux architecutre.
 ## Technologies
 * Lang: JavaScript/ES6/ES7/Babel
 * Frameworks: React/Flux, Material UI components, chartjs, SASS Susy grid, SASS Breakpoint responsive layout, Compass
-* Tools: eslint, webpack (build), jest/jasmine (unit and (snapshot)[https://facebook.github.io/jest/blog/2016/07/27/jest-14.html] testing), git (source control), travis (ci server), coveralls (test coverage data), firebase (deployment)
+* Tools: eslint, webpack (build), jest/jasmine (unit and [snapshot](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) testing), git (source control), travis (ci server), coveralls (test coverage data), firebase (deployment)
