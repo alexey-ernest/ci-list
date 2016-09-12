@@ -1,14 +1,14 @@
 # ci-list
 CI build list UI example
 
+[![Build Status](https://travis-ci.org/alexey-ernest/ci-list.svg?branch=master)](https://travis-ci.org/alexey-ernest/ci-list)
+[![Coverage Status](https://coveralls.io/repos/github/alexey-ernest/ci-list/badge.svg?branch=master)](https://coveralls.io/github/alexey-ernest/ci-list?branch=master)
+
 * [Deployment](#deployment)
 * [Architecture](#architecture)
 * [Technologies](#technologies)
 * [Tests](#tests)
 * [How to run](#how-to-run)
-
-[![Build Status](https://travis-ci.org/alexey-ernest/ci-list.svg?branch=master)](https://travis-ci.org/alexey-ernest/ci-list)
-[![Coverage Status](https://coveralls.io/repos/github/alexey-ernest/ci-list/badge.svg?branch=master)](https://coveralls.io/github/alexey-ernest/ci-list?branch=master)
 
 <img src="assets/ss.png" width="600">
 
