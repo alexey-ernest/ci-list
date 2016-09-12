@@ -1,0 +1,85 @@
+exports[`BuildDetails component should render build details when build property specified 1`] = `
+<div>
+  <div
+    className={undefined}>
+    <div
+      className={undefined}>
+      <span
+        className="material-icons undefined"
+        onMouseEnter={[Function anonymous]}
+        onMouseLeave={[Function anonymous]}
+        style={
+          Object {
+            "color": "#e0e0e0",
+            "display": "block",
+            "fontSize": 48,
+            "muiPrepared": true,
+            "position": "relative",
+            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            "userSelect": "none"
+          }
+        }>
+        build
+      </span>
+      DEBUG
+    </div>
+    <div
+      className={undefined}>
+      <span
+        className="material-icons undefined"
+        onMouseEnter={[Function anonymous]}
+        onMouseLeave={[Function anonymous]}
+        style={
+          Object {
+            "color": "#e0e0e0",
+            "display": "block",
+            "fontSize": 48,
+            "muiPrepared": true,
+            "position": "relative",
+            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            "userSelect": "none"
+          }
+        }>
+        plus_one
+      </span>
+      v
+      1.0.2
+    </div>
+    <div
+      className={undefined}>
+      <span
+        className="material-icons undefined"
+        onMouseEnter={[Function anonymous]}
+        onMouseLeave={[Function anonymous]}
+        style={
+          Object {
+            "color": "#e0e0e0",
+            "display": "block",
+            "fontSize": 48,
+            "muiPrepared": true,
+            "position": "relative",
+            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            "userSelect": "none"
+          }
+        }>
+        cloud_download
+      </span>
+      <a
+        href="goo.gl/packagelink"
+        target="_blank">
+        Download (
+        5.0
+        MB)
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BuildDetails component should render correctly when there is no build data 1`] = `
+<div>
+  <p>
+    CircularProgress
+  </p>
+</div>
+`;
