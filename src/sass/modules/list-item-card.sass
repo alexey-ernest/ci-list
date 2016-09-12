@@ -2,11 +2,21 @@
 @import "../typography"
 
 .item-card
-  +span(3 of 12)
   margin-bottom: rhythm(2)
 
-  &:nth-child(4)
-    +last
+  +span(12 of 12)
+
+  +respond-to('medium')
+    +span(6 of 12)
+    &:nth-child(2n)
+      +last
+
+  +respond-to('large')
+    +span(3 of 12)
+    &:nth-child(2n)
+      +span(3 of 12)
+    &:nth-child(4n)
+      +last
 
 .item-media
   cursor: pointer
