@@ -1,0 +1,15 @@
+exports[`MetricsDetails component should render chart when tests property specified 1`] = `
+<div>
+  <div>
+    Chartjs
+  </div>
+</div>
+`;
+
+exports[`MetricsDetails component should render correctly when there is no tests data 1`] = `
+<div>
+  <p>
+    CircularProgress
+  </p>
+</div>
+`;
